@@ -2,16 +2,25 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Game Time</title>
+  <title>Get yourself a high score!!</title>
+  <style> div{margin-top:40px;} </style>
 </head>
 <body>
   <div>
     <button id="score-button">Generate High Score</button>
   </div>
   <div>
-    <h2>High Scores:</h2>
+    <h2>Current High Scores:</h2>
     <ul id="high-scores"></ul>
   </div>
-  <script src="main.bundle.js"></script>
+  <div>
+    My Name: <input id="name-field"> <input type="submit" id="score-submit" value="Submit High Score">
+  </div>
+  <div>
+    <h2>All Time High Scores:</h2>
+    <table id="all-time-scores-table">
+      <tr><th>Name</th><th>Score</th><tr>
+    </table>
+  <script src="index.js"></script>
 </body>
 </html>
