@@ -15,8 +15,22 @@ scoreButton.addEventListener('click', function(){
 submitButton.addEventListener('click', function(){
   var score = getHighestScore();
   var name = nameInput.value;
+
   submitHighScore(name,score);
+  storeHighScore(name,score);
 })
+
+function storeHighScore(name,score){
+  var highScoresJSON = localStorage.getItem("high-scores");
+  if(highScoresJSON === null){
+    highScoresJSON = '[]';
+  }
+  var currentHighScores = JSON.parse(highScoresJSON);
+  currentHighScores.push({name: name, score: score});
+
+  highScoresJSON = JSON.stringify(currentHighScores);
+  localStorage.setItem('high-scores', highScoresJSON);
+}
 
 function calculateHighScore(score){
   return Math.max(score, highScore);
@@ -50,3 +64,11 @@ function getHighestScore(){
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function displayHighScores(){
+  JSON.parse(localStorage.getItem('high-scores')).forEach(function(element){
+    submitHighScore(element.name, element.score);
+  });
+}
+
+displayHighScores();
